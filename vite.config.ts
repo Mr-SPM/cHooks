@@ -13,19 +13,21 @@ export default defineConfig(({ command }) => ({
       fileName: 'c-hooks',
     },
     rollupOptions: {
-      external: ['react', 'react-dom'],
+      external: ['react', 'react-dom', "react/jsx-runtime",],
       output: {
         globals: {
-          react: 'React',
-          'react-dom': 'reactDOM'
+          react: 'react',
+          'react-dom': 'react-dom',
+          'react/jsx-runtime': 'react/jsx-runtime',
         }
       }
     }
   },
-  plugins: command === 'serve' ? [react()] : [dts({
-    entryRoot: resolve(__dirname, './src/hooks'),
-    outDir: 'dist2',
-    rollupTypes: true
+  plugins: command === 'serve' ? [react()] : [react(), dts({
+    // entryRoot: resolve(__dirname, './src/hooks'),
+    outDir: 'dist',
+    rollupTypes: true,
+    tsconfigPath: "tsconfig.app.json"
   })],
- 
+
 }))

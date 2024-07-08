@@ -4,6 +4,16 @@
   "license": "MIT",
   "version": "0.0.1",
   "type": "module",
+  "types": "./dist/c-hooks.d.ts",
+  "files": ["dist"],
+  "main": "./dist/c-hooks.umd.cjs",
+  "module": "./dist/c-hooks.js",
+  "exports": {
+    ".": {
+      "import": "./dist/c-hooks.js",
+      "require": "./dist/c-hooks.umd.cjs"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
